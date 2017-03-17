@@ -1,6 +1,7 @@
 import time
 
 from slackclient import SlackClient
+from websocket._exceptions import WebSocketConnectionClosedException
 
 from .exceptions import SlackAppError, SlackAppExit
 
@@ -24,10 +25,13 @@ class BaseSlackBot(object):
         if not self._client.rtm_connect():
             raise SlackAppError('RTM connection failed')
         while True:
-            event = self._client.rtm_read()
             try:
-                handler(event)
-            except SlackAppExit:
-                break
-            time.sleep(TIME_WAIT)
+                event = self._client.rtm_read()
+                try:
+                    handler(event)
+                except SlackAppExit:
+                    break
+            except WebSocketConnectionClosedException:
+                if not self._client.rtm_connect():
+                    raise SlackAppError('RTM connection failed')
         print('Exiting...')

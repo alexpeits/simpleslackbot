@@ -30,7 +30,7 @@ def handler_wrapper(channel_name, sc):
                     event['channel'] != channel['id'] or
                     event['type'] != 'message'):
                 continue
-            if event['text'] in GET_IP_CMD:
+            if 'text' in event and event['text'] in GET_IP_CMD:
                 print('Received command')
                 ip = get_ip()
                 print('IP is {}'.format(ip))

@@ -4,7 +4,7 @@ from decouple import config
 from ipbot.bot import BaseSlackBot
 from ipbot.utils import filter_channel
 
-TOKEN = config('TOKEN')
+TOKEN = config('BOT_TOKEN')
 GET_IP_CMD = ['home_ip', 'ip', '~home_ip', '~ip']
 GET_IP_URL = 'http://ipv4.icanhazip.com/'
 

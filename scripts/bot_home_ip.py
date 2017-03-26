@@ -1,8 +1,8 @@
 import requests
 from decouple import config
 
-from ipbot.bot import BaseSlackBot
-from ipbot.utils import filter_channel
+from simpleslackbot.bot import BaseSlackBot
+from simpleslackbot.utils import filter_channel
 
 TOKEN = config('BOT_TOKEN')
 GET_IP_CMD = ['home_ip', 'ip', '~home_ip', '~ip']

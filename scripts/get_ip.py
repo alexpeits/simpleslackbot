@@ -3,9 +3,9 @@ import time
 
 from decouple import config
 
-from ipbot.bot import BaseSlackBot
-from ipbot.utils import filter_channel
-from ipbot.exceptions import SlackAppExit
+from simpleslackbot.bot import BaseSlackBot
+from simpleslackbot.utils import filter_channel
+from simpleslackbot.exceptions import SlackAppExit
 
 
 TOKEN = config('USER_TOKEN')
